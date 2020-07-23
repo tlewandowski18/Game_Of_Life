@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.Canvas {
+  width: 60%;
+  margin: 2% auto;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid gray
+}
+
+.cell {
+  box-sizing: border-box;
+  border: 1px solid gray;
+  width: 2%;
+  padding-top: 1.4%;
+}
+
+.clicked {
+  background-color: yellow;
+}
