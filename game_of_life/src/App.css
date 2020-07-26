@@ -24,3 +24,18 @@
 .clicked {
   background-color: yellow;
 }
+
+.control-board {
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.control {
+  margin: 1% auto;
+  width: 15%;
+  padding: 1%;
+  border: 1px solid black;
+
+}

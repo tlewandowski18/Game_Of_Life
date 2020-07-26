@@ -11,3 +11,9 @@ export const toggleCell = (item) => {
         payload: item
     }
 }
+
+export const toggleIsRunning = () => {
+    return {
+        type: "TOGGLE_IS_RUNNING"
+    }
+}

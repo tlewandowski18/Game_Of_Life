@@ -1,7 +1,7 @@
-import React, { useEffect } from "react"
+import React, {useEffect} from "react"
 import { connect } from 'react-redux'
 
-import { setInitialState } from '../../actions'
+import { setInitialState, toggleCell } from '../../actions'
 
 import Cell from "./Cell"
 
@@ -10,49 +10,48 @@ import Cell from "./Cell"
 
 const Canvas = props => {
 
-    
+    const clickCell = (position) => {
+        props.toggleCell(position)
+    }
 
     let cells = []
-        for (let i=0; i < 50; i++) {
-            for (let j=0; j< 50; j++) {
-                    let neighbors
-                    const rowAbove = i - 1;
-                    const rowBelow = i + 1;
-                    const columnLeft = j - 1;
-                    const columnRight = j + 1;
-                    if (rowAbove < 0 && columnLeft < 0) {
-                        neighbors = [`${i},${columnRight}`, `${rowBelow},${j}`, `${rowBelow},${columnRight}`]
-                    } else if (rowAbove < 0 && columnRight > 49) {
-                        neighbors = [`${i},${columnLeft}`, `${rowBelow},${columnLeft}`, `${rowBelow},${j}`]
-                    } else if (rowBelow > 49 && columnLeft < 0) {
-                        neighbors = [`${rowAbove},${j}`, `${rowAbove},${columnRight}`, `${i},${columnRight}`]
-                    } else if (rowBelow > 49 && columnRight > 49) {
-                        neighbors = [`${i},${columnLeft}`, `${rowAbove},${columnLeft}`, `${rowAbove,j}`]
-                    } else if (rowAbove < 0) {
-                        neighbors = [`${i},${columnLeft}`, `${rowBelow},${columnLeft}`, `${rowBelow},${j}`, `${rowBelow},${columnRight}`, `${i},${columnRight}`]
-                    } else if (columnRight > 49) {
-                        neighbors = [`${rowAbove},${j}`, `${rowAbove},${columnLeft}`, `${i},${columnLeft}`, `${rowBelow},${columnLeft}`, `${rowBelow},${j}`] 
-                    } else if (rowBelow > 49) {
-                        neighbors = [`${i},${columnLeft}`, `${rowAbove},${columnLeft}`, `${rowAbove},${j}`, `${rowAbove},${columnRight}`, `${i},${columnRight}`]
-                    } else if (columnLeft < 0) {
-                        neighbors = [`${rowAbove},${j}`, `${rowAbove},${columnRight}`, `${i},${columnRight}`, `${rowBelow},${columnRight}`, `${rowBelow},${j}`]
-                    } else {
-                        neighbors = [`${rowAbove},${columnLeft}`, `${rowAbove},${j}`, `${rowAbove},${columnRight}`, `${i},${columnRight}`, `${rowBelow},${columnRight}`, `${rowBelow},${j}`, `${rowBelow},${columnLeft}`, `${i},${columnLeft}`]
-                    }
-                cells.push(<Cell 
-                    position={`${i},${j}`}
-                    neighbors={neighbors}
-                ></Cell>)
-            }
-        }  
-    useEffect(() => {
-        const obj = {}
-        cells.forEach(cell => {
-            obj[cell.props.position] = false
-        })
-        props.setInitialState(obj)
-    }, [])
+    Object.keys(props.current_gen).forEach(key => {
+        cells.push(<Cell
+            key={key}
+            position={key}
+            neighbors={props.current_gen[key].neighbors}
+            isAlive={props.current_gen[key].isAlive}
+            clickCell={clickCell}
+        ></Cell>)
+    }) 
     
+    useEffect(() => {
+        Object.keys(props.current_gen).forEach(key => {
+            let count = 0
+            let currentItem = props.current_gen[key]
+            currentItem.neighbors.forEach(neighbor => {
+                if (props.current_gen[neighbor].isAlive) {
+                    count++
+                }
+            })
+            if (currentItem.isAlive && count === 2) {
+                return
+            } else if (currentItem.isAlive && count === 3) {
+                return
+            } else if (!currentItem.isAlive && count === 3) {
+                props.toggleCell(key)
+            } else if (currentItem.isAlive && count < 2) {
+                props.toggleCell(key)
+            } else if (currentItem.isAlive && count > 3) {
+                props.toggleCell(key)
+            }
+            else {
+                return
+            }
+        })
+        
+    }, [props.isRunning])
+
     return (
         <div className="Canvas" >
             {cells}
@@ -62,9 +61,10 @@ const Canvas = props => {
 
 const mapStateToProps = state => {
     return {
+        isRunning: state.isRunning,
         current_gen: state.current_gen,
         next_gen: state.next_gen
     }
 }
 
-export default connect(mapStateToProps, { setInitialState })(Canvas)
+export default connect(mapStateToProps, { setInitialState, toggleCell })(Canvas)
