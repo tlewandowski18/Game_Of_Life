@@ -36,17 +36,11 @@ for (let i=0; i < 50; i++) {
 const initialState = {
     isRunning: false,
     current_gen: obj, 
-    next_gen: null
+    next_gen: obj
 }
 
 export const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case "SET_INITIAL_STATE" :
-            return {
-                ...state,
-                current_gen: action.payload,
-                next_gen: action.payload
-            }
         case "TOGGLE_ITEM" :
             const cellKey = action.payload
             return {
@@ -63,6 +57,25 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isRunning: !state.isRunning
+            }
+        case "CLEAR_CANVAS" :
+            const newObj = {}
+            Object.keys(state.current_gen).forEach(key => {
+                newObj[key] = {
+                    ...state.current_gen[key],
+                    isAlive: false
+                } 
+            })
+            return {
+                ...state,
+                current_gen: newObj
+            }
+        case "FLIP_GENS" :
+            const saved_obj = state.current_gen
+            return {
+                ...state,
+                next_gen: saved_obj,
+                current_gen: action.payload
             }
         default:
             return state

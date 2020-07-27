@@ -1,9 +1,4 @@
-export const setInitialState = (item) => {
-    return {
-        type: "SET_INITIAL_STATE",
-        payload: item
-    }
-}
+
 
 export const toggleCell = (item) => {
     return {
@@ -15,5 +10,18 @@ export const toggleCell = (item) => {
 export const toggleIsRunning = () => {
     return {
         type: "TOGGLE_IS_RUNNING"
+    }
+}
+
+export const clearCanvas = () => {
+    return {
+        type: "CLEAR_CANVAS"
+    }
+}
+
+export const flipGens = item => {
+    return {
+        type: "FLIP_GENS",
+        payload: item
     }
 }

@@ -1,7 +1,7 @@
 import React, {useEffect} from "react"
 import { connect } from 'react-redux'
 
-import { setInitialState, toggleCell } from '../../actions'
+import { toggleCell, flipGens } from '../../actions'
 
 import Cell from "./Cell"
 
@@ -26,31 +26,35 @@ const Canvas = props => {
     }) 
     
     useEffect(() => {
-        Object.keys(props.current_gen).forEach(key => {
-            let count = 0
-            let currentItem = props.current_gen[key]
-            currentItem.neighbors.forEach(neighbor => {
-                if (props.current_gen[neighbor].isAlive) {
-                    count++
+        if (props.on) {
+
+            const newObj = props.current_gen
+            Object.keys(newObj).forEach(key => {
+                let count = 0
+                newObj[key].neighbors.forEach(neighbor => {
+                    if (newObj[neighbor].isAlive) {
+                        count++
+                    }
+                })
+                if (newObj[key].isAlive && count === 2) {
+                    return
+                } else if (newObj[key].isAlive && count === 3) {
+                    return
+                } else if (!newObj[key].isAlive && count === 3) {
+                    newObj[key].isAlive = true
+                } else if (newObj[key].isAlive && count < 2) {
+                    newObj[key].isAlive = false
+                } else if (newObj[key].isAlive && count > 3) {
+                    newObj[key].isAlive = false
+                }
+                else {
+                    return
                 }
             })
-            if (currentItem.isAlive && count === 2) {
-                return
-            } else if (currentItem.isAlive && count === 3) {
-                return
-            } else if (!currentItem.isAlive && count === 3) {
-                props.toggleCell(key)
-            } else if (currentItem.isAlive && count < 2) {
-                props.toggleCell(key)
-            } else if (currentItem.isAlive && count > 3) {
-                props.toggleCell(key)
-            }
-            else {
-                return
-            }
-        })
+            props.flipGens(newObj)
+        }
         
-    }, [props.isRunning])
+    }, [props.on])
 
     return (
         <div className="Canvas" >
@@ -67,4 +71,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { setInitialState, toggleCell })(Canvas)
+export default connect(mapStateToProps, { toggleCell, flipGens })(Canvas)

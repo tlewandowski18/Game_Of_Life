@@ -1,12 +1,14 @@
 import React from "react"
 
 import StartButton from './StartButton'
+import ClearButton from './ClearButton'
 
-const ControlBoard = () => {
+const ControlBoard = (props) => {
 
     return (
         <div className="control-board">
-            <StartButton></StartButton>
+            <StartButton clickStart={props.clickStart}></StartButton>
+            <ClearButton></ClearButton>
         </div>
     )
 }
