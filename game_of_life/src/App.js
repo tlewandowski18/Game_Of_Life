@@ -9,7 +9,7 @@ import ControlBoard from "./Components/ControlBoard/ControlBoard"
 function App(props) {
 
   const [gameRunning, setGameRunning] = useState(false)
-  
+
   const clickButton = () => {
     props.toggleIsRunning()
     setGameRunning(!gameRunning)
@@ -25,7 +25,7 @@ function App(props) {
 
 const mapStateToProps = state => {
   return {
-    isRunning: state.isRunning
+    isRunning: state.running.isRunning
   }
 }
 

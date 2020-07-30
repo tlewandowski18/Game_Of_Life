@@ -14,8 +14,8 @@ function Cell(props) {
 
 const mapStateToProps = state => {
     return {
-        current_gen: state.current_gen,
-        next_gen: state.next_gen
+        current_gen: state.generations.current_gen,
+        next_gen: state.generations.next_gen
     }
 }
 

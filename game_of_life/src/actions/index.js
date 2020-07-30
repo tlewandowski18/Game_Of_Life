@@ -25,3 +25,21 @@ export const flipGens = item => {
         payload: item
     }
 }
+
+export const incrementIterations = () => {
+    return {
+        type: "INCREMENT_ITERATIONS",
+    }
+}
+
+export const resetIterations = () => {
+    return {
+        type: "RESET_ITERATIONS",
+    }
+}
+
+export const randomize = () => {
+    return {
+        type: "RANDOMIZE",
+    }
+}

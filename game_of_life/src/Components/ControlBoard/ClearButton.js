@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { clearCanvas } from '../../actions'
+import { clearCanvas, resetIterations } from '../../actions'
 
 function ClearButton(props) {
     
     const clickButton = () => {
         props.clearCanvas()
+        props.resetIterations()
     }
     
     return (
@@ -15,8 +16,8 @@ function ClearButton(props) {
 
 const mapStateToProps = state => {
     return {
-        current_gen: state.current_gen
+        current_gen: state.generations.current_gen,
     }
 }
 
-export default connect(mapStateToProps, { clearCanvas })(ClearButton)
+export default connect(mapStateToProps, { clearCanvas, resetIterations })(ClearButton)
