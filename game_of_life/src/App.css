@@ -1,42 +1,198 @@
 .App {
   text-align: center;
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
 }
 
+.Game {
+  width: 100%
+}
+
+.GameBoard {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.GenerationCounter {
+  width: 100%;
+  padding: 2% 0;
+  color:  #495867;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.Counter {
+  width: 50%;
+  text-align: center;
+}
+
+.EmptyDiv {
+  width: 30%;
+}
+
 .Canvas {
-  width: 60%;
-  margin: 2% auto;
-  background-color: #f0f0f0;
+  width: 50%;
+  background-color: #F7F7FF;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border: 1px solid gray
+  border: 1px solid #495867;
 }
 
 .cell {
   box-sizing: border-box;
-  border: 1px solid gray;
+  border: 1px solid #495867;
   width: 2%;
-  padding-top: 1.4%;
+  padding-top: 1.3%;
 }
 
+.cell:hover {
+  background-color: gray;
+}
+
+
+
 .clicked {
-  background-color: yellow;
+  background-color: #495867;
 }
 
 .control-board {
-  width: 60%;
-  margin: 0 auto;
+  width: 30%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
 .control {
-  margin: 1% auto;
-  width: 15%;
-  padding: 1%;
-  border: 1px solid black;
+  color: #495867;
+  background-color: #F7F7FF;
+  font-weight: bold;
+  margin: 5% auto;
+  width: 60%;
+  padding: 5% 0;
+  border: 1px solid #495867;
+  border-radius: 10px;
 
+}
+
+.control:hover {
+  background-color: #495867;
+  color: #F7F7FF;
+  cursor: pointer;
+}
+
+
+.isRunning {
+  content: "Stop!";
+  background-color: #FF3366;
+}
+
+.isRunning:hover {
+  background-color: #FF3366;
+}
+
+.Header {
+  width: 100%;
+  padding-left: 6%;
+  display: flex;
+  background-color: #6195C5;
+}
+
+.Title {
+  font-family: Helvetica;
+  width: 30%;
+  padding: 1%;
+  color: #495867;
+  font-weight: bold;
+}
+.NavBar {
+  width: 60%;
+  margin-left: 8%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.NavItem {
+  text-decoration: none;
+  font-size: 20px;
+  margin: 0 5%;
+  padding: 1% 3%;
+  color: #495867;
+  font-weight: bold;
+}
+
+.NavItem:hover {
+  border: 2px solid #495867;
+}
+
+.About {
+  width: 100%;
+  color: #495867;
+}
+
+.about-section {
+  display: flex;
+  margin: 3% 2%;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.img-container {
+  width: 40%
+}
+
+.img-container img {
+  width: 60%;
+  border-radius: 5px;
+}
+
+.content-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 8%;
+}
+
+.content-container-reverse {
+  width: 60%;
+  margin-left: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.content-container p {
+  text-align: justify;
+  margin: 2% 0;
+
+}
+
+.content-container h2 {
+  font-weight: bold;
+  margin: 0;
+
+}
+.content-container-reverse p {
+  text-align: justify;
+  margin: 2% 0;
+
+}
+
+.content-container-reverse h2 {
+  font-weight: bold;
+  margin: 0;
+
+}
+
+.rule {
+  text-align: justify;
+  padding-left: 10px;
 }

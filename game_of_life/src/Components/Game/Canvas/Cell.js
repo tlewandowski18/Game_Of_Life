@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from 'react-redux'
 
-import { toggleCell } from '../../actions'
+import { toggleCell } from '../../../actions'
 
 function Cell(props) {
 

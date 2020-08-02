@@ -1,32 +1,23 @@
-import React, {useState} from 'react';
-import { connect } from 'react-redux'
-import { toggleIsRunning } from './actions'
+import React from 'react';
 import './App.css';
+import {Route} from 'react-router-dom'
 
-import Canvas from "./Components/Canvas/Canvas"
-import ControlBoard from "./Components/ControlBoard/ControlBoard"
+import Header from "./Components/Header/Header"
+import Game from "./Components/Game/Game"
+import About from "./Components/About/About"
 
 function App(props) {
 
-  const [gameRunning, setGameRunning] = useState(false)
-
-  const clickButton = () => {
-    props.toggleIsRunning()
-    setGameRunning(!gameRunning)
-  }
 
   return (
     <div className="App">
-      <Canvas on={gameRunning}></Canvas>
-      <ControlBoard clickStart={clickButton}></ControlBoard>
-    </div>
-  );
+      <Header></Header>
+      <Route exact path='/' component={Game} />
+      <Route path='/about' component={About} />
+      
+    </div> 
+  )
 }
 
-const mapStateToProps = state => {
-  return {
-    isRunning: state.running.isRunning
-  }
-}
 
-export default connect(mapStateToProps, { toggleIsRunning })(App);
+export default App;
