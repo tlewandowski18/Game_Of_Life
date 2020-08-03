@@ -17,9 +17,9 @@ function SpeedSelector(props) {
         if (e.target.value === "slow") {
             props.changeSpeed(1000)
         } else if (e.target.value === "medium") {
-            props.changeSpeed(100)
+            props.changeSpeed(300)
         } else {
-            props.changeSpeed(10)
+            props.changeSpeed(50)
         }
     }
     

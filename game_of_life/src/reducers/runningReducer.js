@@ -2,7 +2,7 @@
 const initialState = {
     isRunning: false,
     iterations: 0,
-    speed: 100
+    speed: 300
 }
 
 export default function runningReducer(state = initialState, action) {
