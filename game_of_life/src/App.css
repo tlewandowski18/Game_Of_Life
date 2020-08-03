@@ -85,7 +85,15 @@
   cursor: pointer;
 }
 
+.dropdown {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4% 20%;
+}
 
+.dropdown option{
+  text-align: center;
+}
 .isRunning {
   content: "Stop!";
   background-color: #FF3366;

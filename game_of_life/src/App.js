@@ -8,7 +8,7 @@ import About from "./Components/About/About"
 
 function App(props) {
 
-
+  //create routes for Game and About pages
   return (
     <div className="App">
       <Header></Header>

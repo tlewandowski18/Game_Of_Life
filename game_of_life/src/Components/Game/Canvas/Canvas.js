@@ -13,7 +13,7 @@ const Canvas = props => {
             props.toggleCell(position)
         }
     }
-    
+    //Create cell for every key in state
     let cells = []
     let cellsAlive = []
 
@@ -25,6 +25,7 @@ const Canvas = props => {
             isAlive={props.current_gen[key].isAlive}
             clickCell={clickCell}
         ></Cell>)
+        //create list of live cells and dead cells
         if (props.current_gen[key].isAlive) {
             cellsAlive.push(1)
         } else {
@@ -35,11 +36,14 @@ const Canvas = props => {
     const allCellsDead = cellsAlive.every(cell => cell === 0)
 
     useEffect(() => {
+        // check to see that program is running and that cells are alive
         if (props.isRunning && !allCellsDead) {
-            setTimeout(props.incrementIterations, 50);
+            //delay increment function to avoid infinite loop 
+            setTimeout(props.incrementIterations, props.speed);
         } 
     })
     
+    //run algroithm as long as iterations keeps incrementing and program has not been stopped
     useEffect(() => {
         if (props.isRunning) {
             algorithm(props)
@@ -58,6 +62,7 @@ const mapStateToProps = state => {
     return {
         isRunning: state.running.isRunning,
         iterations: state.running.iterations,
+        speed: state.running.speed,
         current_gen: state.generations.current_gen
     }
 }

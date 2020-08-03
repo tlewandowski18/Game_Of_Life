@@ -4,6 +4,7 @@ import {conwayLink} from '../../misc'
 function About() {
     return (
         <div className="About">
+            {/* section block */}
             <div className="about-section">
                 <div className="img-container">
                     <img src={conwayLink} alt="John Conway"/>
@@ -14,6 +15,7 @@ function About() {
                     <p>Born and raised in Liverpool, Conway spent the first half of his career at the University of Cambridge before moving to the United States, where he held the John von Neumann Professorship at Princeton University for the rest of his career. On 11 April 2020, at age 82, he died of complications from COVID-19.</p>
                 </div>
             </div>
+            {/* section block reversed */}
             <div className="about-section reverse">
                 <div className="img-container">
                     <img src='https://i.stack.imgur.com/krPwE.png' alt="grid"/>
@@ -24,6 +26,7 @@ function About() {
                     <p>The Game of Life is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves. It is Turing complete and can simulate a universal constructor or any other Turing machine.</p>
                 </div>
             </div>
+            {/* section block */}
             <div className="about-section">
                 <div className="img-container" alt="grid">
                     <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Game_of_life_infinite1.svg/324px-Game_of_life_infinite1.svg.png' alt='grid'/>

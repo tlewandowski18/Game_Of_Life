@@ -8,6 +8,7 @@ import StartButton from './StartButton'
 import ClearButton from './ClearButton'
 import RandomButton from './RandomButton'
 import IncrementButton from './Increment'
+import SpeedSelector from './SpeedSelector'
 
 const ControlBoard = (props) => {
     const clickButton = () => {
@@ -20,6 +21,7 @@ const ControlBoard = (props) => {
             <ClearButton></ClearButton>
             <RandomButton></RandomButton>
             <IncrementButton></IncrementButton>
+            <SpeedSelector></SpeedSelector>
         </div>
     )
 }

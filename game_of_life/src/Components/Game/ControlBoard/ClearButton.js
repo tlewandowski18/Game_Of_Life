@@ -4,6 +4,7 @@ import { clearCanvas, resetIterations} from '../../../actions'
 
 function ClearButton(props) {
     
+    //clear canvas and reset iterations on click
     const clickButton = () => {
         if (props.isRunning) {
             alert("Cannot clear while game is running!") 

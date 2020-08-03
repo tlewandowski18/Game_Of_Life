@@ -43,3 +43,10 @@ export const randomize = () => {
         type: "RANDOMIZE",
     }
 }
+
+export const changeSpeed = item => {
+    return {
+        type: "CHANGE_SPEED",
+        payload: item
+    }
+}
